@@ -1,15 +1,22 @@
-import { useReducer } from "react";
+import { useState } from "react";
 
 const Bulb = () => {
-  const { light, useLight } = useReducer("OFF")
-  <button
-    onClick={() => {useReducer(light = )}}  
-  ></button>
+  const [ light, useLight ] = useState("OFF")
 
   return (
-    light === "ON" ? 
-    <div style={{backgroundColor:"orange"}}>{light}</div> :
-    <div style={{backgroundColor:"gray"}}>{light}</div>
+    <div>
+      {light === "ON" ? 
+      <h1 style={{backgroundColor: "orange"}}>ON</h1> :
+      <h1 style={{backgroundColor: "gray"}}>OFF</h1>
+    }
+    <button
+      onClick={() => {
+        useLight(light === "ON" ? "OFF" : "ON")
+      }}
+    >
+      {light === "ON" ? "끄기" : "켜기"}
+      </button>
+    </div>
   )
 }
 
