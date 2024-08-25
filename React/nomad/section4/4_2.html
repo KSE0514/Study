@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.getElementById("root")
+
+  function Btn({text, fontSize = 12}) {
+    // 인자의 기본값 설정 가능
+    console.log(text)
+    return (
+      <button 
+      style={{
+        backgroundColor: "tomato",
+        color: "white",
+        padding: "10px 20px",
+        border: 0,
+        borderRadius: 10,
+        fontSize, 
+        // 원랜 fontSize: fontSize이지만 key와 value의 변수 명이 같다면 위와 같이 쓸 수 있음
+      }}
+      >
+      {text}
+      </button>
+    )
+  }
+  
+  // 아래 기능을 사용하고 싶을 경우 8번 라인에 있는 script문이 있어야 함
+  // props의 형식 지정 가능_지정한 형식대로 넘기지 않을 시 콘솔에 경고 문구 나옴
+  Btn.propTypes = {
+    text: PropTypes.string.isRequired,
+    // 반드시 props으로 넘겨야 할 경우 isRequired 붙이기
+    fontSize: PropTypes.number,
+  }
+
+  function App () {
+    return(
+      <div>
+        <Btn text="Save Changes" fontSize={20} />
+        <Btn text="버튼" />
+      </div>
+    )
+  }
+  ReactDOM.render(<App />, root)
+</script>
+</html> 

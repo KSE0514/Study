@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.getElementById("root")
+
+  function Btn({text, onClick}) {
+    console.log(text)
+    return (
+      <button 
+      onClick={onClick}
+      style={{
+        backgroundColor: "tomato",
+        color: "white",
+        padding: "10px 20px",
+        border: 0,
+        borderRadius: 10,
+        fontSize: 16,
+      }}
+      >
+      {text}
+      </button>
+    )
+  }
+  const MemorizedBtn = React.memo(Btn);
+  // memo: 변한 것이 없는 경우에 대해서는 리렌더링 되는 것을 막아줌
+
+  function App () {
+    const [value, setValue] = React.useState("Save Changes");
+    const changeValue = () => setValue("Revert Changes")
+    return(
+      <div>
+        <MemorizedBtn text={value} onClick={changeValue} />
+        <MemorizedBtn text="버튼2" />
+      </div>
+    )
+  }
+  ReactDOM.render(<App />, root)
+</script>
+</html> 
