@@ -30,7 +30,7 @@ npx create-next-app@14 앱이름
 ```
 <details>
 <summary></summary>
-<div markdown = '1'>
+<div markdown = '1' style="background-color: #D4F4FA; color: black;">
 <ul>
   <li>npx: Node Package Executor</li>
   <li>create-next-app: 새로운 Next.JS의 앱을 생성하는 NodeJS의 패키지</li>
